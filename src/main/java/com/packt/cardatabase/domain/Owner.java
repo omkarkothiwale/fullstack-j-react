@@ -11,9 +11,11 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ownerId;
     private String firstName, lastName;
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "car_owner", joinColumns = {@JoinColumn(name = "ownerid")}, inverseJoinColumns = {@JoinColumn(name = "id")})
-    private Set<Car> cars;
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "car_owner", joinColumns = {@JoinColumn(name = "ownerid")}, inverseJoinColumns = {@JoinColumn(name = "id")})
+//    private Set<Car> cars;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private List<Car> cars;
 
     public Owner () {};
 
@@ -47,11 +49,19 @@ public class Owner {
         this.lastName = lastName;
     }
 
-    public Set<Car> getCars() {
+//    public Set<Car> getCars() {
+//        return cars;
+//    }
+//
+//    public void setCars(Set<Car> cars) {
+//        this.cars = cars;
+//    }
+
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setCars(Set<Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 }

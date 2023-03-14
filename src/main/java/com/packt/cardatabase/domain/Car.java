@@ -12,14 +12,19 @@ public class Car {
     private long id;
     private String brand, model, color, registerNumber;
     private int year, price;
-    @ManyToMany(mappedBy = "cars")
-    private Set<Owner> owner =  new HashSet<>();
+//    @ManyToMany(mappedBy = "cars")
+//    private Set<Owner> owner =  new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner")
+    private Owner owner;
 
     public Car () {
 
     }
 
-    public Car(String brand, String model, String color, String registerNumber, int year, int price, Set<Owner> owner) {
+//    public Car(String brand, String model, String color, String registerNumber, int year, int price, Set<Owner> owner) {
+    public Car(String brand, String model, String color, String registerNumber, int year, int price, Owner owner) {
         this.brand = brand;
         this.model = model;
         this.color = color;
@@ -77,11 +82,19 @@ public class Car {
         this.year = year;
     }
 
-    public Set<Owner> getOwner() {
+//    public Set<Owner> getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(Set<Owner> owner) {
+//        this.owner = owner;
+//    }
+
+    public Owner getOwner() {
         return owner;
     }
 
-    public void setOwner(Set<Owner> owner) {
+    public void setOwner(Owner owner) {
         this.owner = owner;
     }
 

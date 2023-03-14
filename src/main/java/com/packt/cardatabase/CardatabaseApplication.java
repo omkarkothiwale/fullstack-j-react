@@ -33,12 +33,18 @@ public class CardatabaseApplication implements CommandLineRunner {
 		Owner owner2 = new Owner("Sid", "Kotiwale");
 		ownerRepository.saveAll(Arrays.asList(owner1, owner2));
 
+//		repository.save(new Car("Ford", "Mustang", "Red",
+//				"ADF-1121", 2021, 59000, new HashSet<>(List.of(owner1))));
+//		repository.save(new Car("Nissan", "Leaf", "White",
+//				"SSJ-3002", 2019, 29000, new HashSet<>(List.of(owner2))));
+//		repository.save(new Car("Toyota", "Prius", "Silver",
+//				"KKO-0212", 2020, 39000, new HashSet<>(List.of(owner1))));
 		repository.save(new Car("Ford", "Mustang", "Red",
-				"ADF-1121", 2021, 59000, new HashSet<>(List.of(owner1))));
+				"ADF-1121", 2021, 59000, owner1));
 		repository.save(new Car("Nissan", "Leaf", "White",
-				"SSJ-3002", 2019, 29000, new HashSet<>(List.of(owner2))));
+				"SSJ-3002", 2019, 29000, owner2));
 		repository.save(new Car("Toyota", "Prius", "Silver",
-				"KKO-0212", 2020, 39000, new HashSet<>(List.of(owner1))));
+				"KKO-0212", 2020, 39000, owner1));
 
 		for (Car car: repository.findAll()) {
 			logger.info(car.getBrand() + " " + car.getModel());

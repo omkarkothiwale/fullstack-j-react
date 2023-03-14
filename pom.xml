@@ -31,11 +31,9 @@
 
 		<dependency>
 
-			<groupId>com.h2database</groupId>
+			<groupId>org.mariadb.jdbc</groupId>
 
-			<artifactId>h2</artifactId>
-
-			<scope>runtime</scope>
+			<artifactId>mariadb-java-client</artifactId>
 
 		</dependency>
 
